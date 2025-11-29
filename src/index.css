@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+    background-color: #0f172a;
+    /* Slate 900 fallback */
+    color: #f8fafc;
+    overflow-x: hidden;
+}
+
+#root {
+    position: relative;
+    z-index: 1;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4f46e5;
+    /* Indigo 600 */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4338ca;
+    /* Indigo 700 */
+}
+
+/* Section Headings */
+.section-heading {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 3rem;
+    background: linear-gradient(to right, #818cf8, #c084fc, #f472b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.02em;
+}
+
+/* Section Block */
+.section-block {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    position: relative;
+}
+
+/* Utility for glassmorphism cards */
+.glass-card {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Space video background - full screen behind content */
+.space-video-wrapper {
+    position: fixed;
+    inset: 0;
+    /* top:0; right:0; bottom:0; left:0 */
+    z-index: -60;
+    /* sit behind everything */
+    pointer-events: none;
+    /* allow clicks through */
+    overflow: hidden;
+    will-change: transform, opacity;
+}
+
+/* The video element: cover entire viewport, keep aspect ratio */
+.space-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: 120%;
+    /* slightly taller to avoid letterboxing on some screens */
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    filter: saturate(1.02) contrast(1.02) brightness(0.9);
+    opacity: 0.95;
+}
+
+/* small devices: scale down to keep performance */
+@media (max-width: 768px) {
+    .space-video {
+        height: 140%;
+    }
+}
+
+/* overlay to improve contrast (tweak color/opacity as needed) */
+.space-video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(3, 7, 18, 0.25), rgba(1, 2, 12, 0.45));
+    pointer-events: none;
+    mix-blend-mode: normal;
+}
