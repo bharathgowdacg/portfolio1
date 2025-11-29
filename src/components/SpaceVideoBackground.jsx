@@ -2,7 +2,7 @@ import React from "react";
 
 export default function SpaceVideoBackground() {
     // Path to the uploaded video
-    const videoSrc = "/vedios/vedio.mp4";
+    const videoSrc = "https://fg6ae0196omuyqcy.public.blob.vercel-storage.com/vedio.mp4";
 
     return (
         <div className="space-video-wrapper" aria-hidden="true">
